@@ -15,6 +15,16 @@
                 <artifactId>httpclient</artifactId>
                 <version>4.5.14</version>
             </dependency>
+            <dependency>
+                <groupId>com.weblookandfeel</groupId>
+                <artifactId>weblaf-ui</artifactId>
+                <version>x.x.x</version>
+            </dependency>
+            <dependency>
+                <groupId>com.weblookandfeel</groupId>
+                <artifactId>weblaf-core</artifactId>
+                <version>x.x.x</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

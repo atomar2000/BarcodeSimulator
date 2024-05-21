@@ -28,7 +28,7 @@ public class InputArea extends JPanel {
     }
     private InputArea() {
         inputPanel = new JPanel();
-        JTextField barcodeTextField = new JTextField(23);
+        JTextField barcodeTextField = new JTextField(27);
         barcodeTextField.addActionListener(e -> {
             String s = e.getActionCommand();
             performScan(s);
@@ -75,7 +75,7 @@ public class InputArea extends JPanel {
         });
         oneDimBarcodeBtn.setPreferredSize(new Dimension(165, 20));
         dataMatrixBarcodeBtn.setPreferredSize(new Dimension(165, 20));
-        scanBtn.setPreferredSize(new Dimension(60, 20));
+        scanBtn.setPreferredSize(new Dimension(80, 20));
         JPanel inputLabelAndTextPanel = new JPanel();
         inputLabelAndTextPanel.add(barcodeTextField);
         inputLabelAndTextPanel.add(enterRadioBtn);
@@ -218,27 +218,25 @@ public class InputArea extends JPanel {
         robotObject.delay(KEY_DELAY);
 
         // press and release 001d
-        robotObject.keyPress(KeyEvent.VK_0);
+        robotObject.keyPress(KeyEvent.VK_NUMPAD0);
         robotObject.delay(KEY_DELAY);
-        robotObject.keyRelease(KeyEvent.VK_0);
+        robotObject.keyRelease(KeyEvent.VK_NUMPAD0);
         robotObject.delay(KEY_DELAY);
-        robotObject.keyPress(KeyEvent.VK_0);
+        robotObject.keyPress(KeyEvent.VK_NUMPAD0);
         robotObject.delay(KEY_DELAY);
-        robotObject.keyRelease(KeyEvent.VK_0);
+        robotObject.keyRelease(KeyEvent.VK_NUMPAD0);
         robotObject.delay(KEY_DELAY);
-        robotObject.keyPress(KeyEvent.VK_2);
+        robotObject.keyPress(KeyEvent.VK_NUMPAD2);
         robotObject.delay(KEY_DELAY);
-        robotObject.keyRelease(KeyEvent.VK_2);
+        robotObject.keyRelease(KeyEvent.VK_NUMPAD2);
         robotObject.delay(KEY_DELAY);
-        robotObject.keyPress(KeyEvent.VK_9);
+        robotObject.keyPress(KeyEvent.VK_NUMPAD9);
+        robotObject.delay(KEY_DELAY);
+        robotObject.keyRelease(KeyEvent.VK_NUMPAD9);
         robotObject.delay(KEY_DELAY);
 
         // release Alt
         robotObject.keyRelease(KeyEvent.VK_ALT);
-        robotObject.delay(KEY_DELAY);
-
-
-        robotObject.keyRelease(KeyEvent.VK_9);
         robotObject.delay(KEY_DELAY);
 //        robotObject.keyRelease(29);
 //        robotObject.delay(KEY_DELAY);

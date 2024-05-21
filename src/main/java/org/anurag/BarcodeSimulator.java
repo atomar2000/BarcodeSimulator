@@ -2,6 +2,7 @@ package org.anurag;
 
 import javax.swing.*;
 
+
 import org.anurag.components.BarcodeImage;
 import org.anurag.components.InputArea;
 import org.anurag.components.RecentBarcodes;
@@ -9,6 +10,8 @@ import org.anurag.components.RecentBarcodes;
 public class BarcodeSimulator {
     public static JFrame frame = null;
     private static void createAndShowGUI() {
+        UIManager.setLookAndFeel(WebLookAndFeel.class.getCanonicalName());
+        WebLookAndFeel.initializeManagers();
         frame = new JFrame("BARCODE SIMULATOR");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         InputArea inputPanel = InputArea.getInstance();
