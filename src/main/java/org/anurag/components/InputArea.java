@@ -3,6 +3,7 @@ package org.anurag.components;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -10,6 +11,7 @@ import java.util.regex.Pattern;
 
 public class InputArea extends JPanel {
     public JPanel inputPanel;
+    public final JTextField barcodeTextField = new JTextField(27);
     public static InputArea inputArea = new InputArea();
     public static char ALT_REPLACEMENT_CHAR = '\u001B';
     public static char CTRL_REPLACEMENT_CHAR = '\u001C';
@@ -28,16 +30,16 @@ public class InputArea extends JPanel {
     }
     private InputArea() {
         inputPanel = new JPanel();
-        JTextField barcodeTextField = new JTextField(27);
         barcodeTextField.addActionListener(e -> {
             String s = e.getActionCommand();
-            performScan(s);
-            writeToCacheFile(s);
-            barcodeTextField.setText("");
+            if(s != null && !s.isEmpty()) {
+                performScan(s);
+                writeToCacheFile(s);
+                barcodeTextField.setText("");
+            }
         });
         ButtonGroup bg = new ButtonGroup();
         JRadioButton enterRadioBtn=new JRadioButton("Enter", true);
-        enterRadioBtn.isSelected();
         enterRadioBtn.addActionListener(e-> {SUFFIX = KeyEvent.VK_ENTER;});
         JRadioButton tabRadioBtn=new JRadioButton("Tab");
         tabRadioBtn.addActionListener(e -> {SUFFIX = KeyEvent.VK_TAB;});
@@ -45,9 +47,8 @@ public class InputArea extends JPanel {
         bg.add(tabRadioBtn);
         JButton scanBtn = new JButton("Scan");
         scanBtn.addActionListener(e -> {
-            JTextField getInputTextField = getInputTextFieldComponent();
-            String s = getInputTextField.getText();
-            if(s != null && s.length() > 0) {
+            String s = barcodeTextField.getText();
+            if(s != null && !s.isEmpty()) {
                 performScan(s);
                 writeToCacheFile(s);
                 barcodeTextField.setText("");
@@ -55,9 +56,8 @@ public class InputArea extends JPanel {
         });
         JButton oneDimBarcodeBtn = new JButton("linear barcode");
         oneDimBarcodeBtn.addActionListener(e -> {
-            JTextField getInputTextField = getInputTextFieldComponent();
-            String s = getInputTextField.getText();
-            if(s != null && s.length() > 0) {
+            String s = barcodeTextField.getText();
+            if(s != null && !s.isEmpty()) {
                 generateOneDimImage(s);
                 writeToCacheFile(s);
                 barcodeTextField.setText("");
@@ -65,9 +65,8 @@ public class InputArea extends JPanel {
         });
         JButton dataMatrixBarcodeBtn = new JButton("data-matrix barcode");
         dataMatrixBarcodeBtn.addActionListener(e -> {
-            JTextField getInputTextField = getInputTextFieldComponent();
-            String s = getInputTextField.getText();
-            if(s != null && s.length() > 0) {
+            String s = barcodeTextField.getText();
+            if(s != null && !s.isEmpty()) {
                 generateTwoDimImage(s);
                 writeToCacheFile(s);
                 barcodeTextField.setText("");
@@ -123,6 +122,11 @@ public class InputArea extends JPanel {
         BarcodeImage barcodeImage = BarcodeImage.getInstance();
         String finalBarcodeText = replaceKeyPressesWithChars("<GS>", "\\\\F", barcodeText);
         finalBarcodeText = replaceKeyPressesWithChars("[|]", "\\\\F", finalBarcodeText);
+        if(SUFFIX == KeyEvent.VK_ENTER) {
+            finalBarcodeText = String.format("%s%s", finalBarcodeText, "\\n");
+        } else {
+            finalBarcodeText = String.format("%s%s", finalBarcodeText, "\\t");
+        }
         barcodeImage.generateBarcodeImage(finalBarcodeText, "one_dim");
     }
 
@@ -130,14 +134,12 @@ public class InputArea extends JPanel {
         BarcodeImage barcodeImage = BarcodeImage.getInstance();
         String finalBarcodeText = replaceKeyPressesWithChars("<GS>", "\\\\F", barcodeText);
         finalBarcodeText = replaceKeyPressesWithChars("[|]", "\\\\F", finalBarcodeText);
+        if(SUFFIX == KeyEvent.VK_ENTER) {
+            finalBarcodeText = String.format("%s%s", finalBarcodeText, "\\n");
+        } else {
+            finalBarcodeText = String.format("%s%s", finalBarcodeText, "\\t");
+        }
         barcodeImage.generateBarcodeImage(finalBarcodeText, "two_dim");
-    }
-
-    private JTextField getInputTextFieldComponent() {
-        Component[] components = inputPanel.getComponents();
-        JPanel getInputJpanel = (JPanel) components[0];
-        components = getInputJpanel.getComponents();
-        return (JTextField) components[0];
     }
 
     private void performScan(final String barcodeText){
@@ -297,13 +299,15 @@ public class InputArea extends JPanel {
         spCharMap.put('(', KeyEvent.VK_9);
         spCharMap.put(')', KeyEvent.VK_0);
 
+        spCharMap.put('_', KeyEvent.VK_MINUS);
+        spCharMap.put('+', KeyEvent.VK_EQUALS);
         spCharMap.put('{', KeyEvent.VK_OPEN_BRACKET);
         spCharMap.put('}', KeyEvent.VK_CLOSE_BRACKET);
         spCharMap.put(':', KeyEvent.VK_SEMICOLON);
         spCharMap.put('\"', KeyEvent.VK_QUOTE);
         spCharMap.put('|', KeyEvent.VK_BACK_SLASH);
-        spCharMap.put('<', KeyEvent.VK_LESS);
-        spCharMap.put('>', KeyEvent.VK_GREATER);
+        spCharMap.put('<', KeyEvent.VK_COMMA);
+        spCharMap.put('>', KeyEvent.VK_PERIOD);
         spCharMap.put('?', KeyEvent.VK_SLASH);
     }
 }

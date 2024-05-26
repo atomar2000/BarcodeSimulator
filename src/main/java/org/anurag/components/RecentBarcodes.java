@@ -78,18 +78,14 @@ public class RecentBarcodes extends JPanel {
         }
         recentBarcodesPanel.setLayout(new GridLayout(recentBarcodes.size()+1, 1));
         recentBarcodesPanel.setPreferredSize(new Dimension(400,(recentBarcodeButtons.size()*20)+20));
-        BarcodeSimulator.frame.setSize(BarcodeSimulator.frame.getWidth(), BarcodeSimulator.frame.getHeight()-PREVIOUS_HEIGHT+recentBarcodesPanel.getHeight()); // -(x-1)*30 + x*30 = -30x-30+30x
-        PREVIOUS_HEIGHT = recentBarcodesPanel.getHeight();
+        BarcodeSimulator.frame.setSize(BarcodeSimulator.frame.getWidth(), BarcodeSimulator.frame.getHeight()-PREVIOUS_HEIGHT+(recentBarcodeButtons.size()*20)+20); // -(x-1)*30 + x*30 = -30x-30+30x
+        PREVIOUS_HEIGHT = (recentBarcodeButtons.size()*20)+20;
         recentBarcodesPanel.setVisible(true);
         recentBarcodesPanel.revalidate();
     }
 
     private void updateTextInInputArea(final String newBarcodeText){
         InputArea inputArea = InputArea.getInstance();
-        Component[] components = inputArea.getInputJpanel().getComponents();
-        JPanel inputAreaPanel = (JPanel) components[0];
-        Component[] components1 = inputAreaPanel.getComponents();
-        JTextField inputTextField = (JTextField) components1[0];
-        inputTextField.setText(newBarcodeText);
+        inputArea.barcodeTextField.setText(newBarcodeText);
     }
 }

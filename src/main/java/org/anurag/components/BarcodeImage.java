@@ -28,7 +28,7 @@ public class BarcodeImage extends JPanel{
     private static int PREVIOUS_HEIGHT = 0;
     private BufferedImage image = null;
     private JButton dataMatrixImgBtn = null;
-    private JLabel clickToCopyImage = new JLabel("Click to Copy the image");
+    private JLabel clickToCopyImage = new JLabel("Click the image to copy");
 
     public void generateBarcodeImage(String barcodeText, final String barcodeType){
         barcodeImageJpanel.removeAll();
@@ -58,7 +58,7 @@ public class BarcodeImage extends JPanel{
             dataMatrixImgBtn.addActionListener(e -> new CopyImagetoClipBoard(image));
             dataMatrixImgBtn.setPreferredSize(new Dimension(image.getWidth()+20, image.getHeight()+10));
             widthImg = image.getWidth()+20;
-            heightImg = image.getHeight()+10;
+            heightImg = image.getHeight()+30;
             barcodeImageJpanel.add(dataMatrixImgBtn);
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class BarcodeImage extends JPanel{
         barcodeImageJpanel.setPreferredSize(new Dimension(widthImg, heightImg));
         barcodeImageJpanel.add(clickToCopyImage);
         barcodeImageJpanel.revalidate();
-        BarcodeSimulator.frame.setSize(new Dimension(Math.max(widthImg+10,BarcodeSimulator.frame.getWidth()), BarcodeSimulator.frame.getHeight()-PREVIOUS_HEIGHT+heightImg));
+        BarcodeSimulator.frame.setSize(new Dimension(Math.max(widthImg+10,500), BarcodeSimulator.frame.getHeight()-PREVIOUS_HEIGHT+heightImg));
         PREVIOUS_HEIGHT = heightImg;
         BarcodeSimulator.frame.revalidate();
     }

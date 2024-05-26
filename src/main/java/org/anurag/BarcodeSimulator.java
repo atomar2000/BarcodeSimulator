@@ -10,8 +10,7 @@ import org.anurag.components.RecentBarcodes;
 public class BarcodeSimulator {
     public static JFrame frame = null;
     private static void createAndShowGUI() {
-        UIManager.setLookAndFeel(WebLookAndFeel.class.getCanonicalName());
-        WebLookAndFeel.initializeManagers();
+//        UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
         frame = new JFrame("BARCODE SIMULATOR");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         InputArea inputPanel = InputArea.getInstance();
@@ -32,5 +31,6 @@ public class BarcodeSimulator {
 
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(BarcodeSimulator::createAndShowGUI);
+
     }
 }
