@@ -1,5 +1,7 @@
 ## STEPS TO USE THE APPLICATION:
 1. Download the following Jar: [BarcodeSimulator JAR file](https://github.com/atomar2000/BarcodeSimulator/blob/main/target/BarcodeSimulator-1.0-SNAPSHOT-jar-with-dependencies.jar)
+   ![image](https://github.com/atomar2000/BarcodeSimulator/assets/43878272/10034acd-dc32-4fd6-ad32-2b28d8c95145)
+
 2. Make sure you have JAVA 1.8 installed in your system.
 3. Double click on the jar file and you are good to go.
 
