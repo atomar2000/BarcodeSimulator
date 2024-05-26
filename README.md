@@ -1,3 +1,5 @@
+[![Latest Release](https://img.shields.io/github/v/release/atomar2000/BarcodeSimulator)]([https://github.com/username/repository/releases/latest](https://github.com/atomar2000/BarcodeSimulator/releases/latest))
+
 ## STEPS TO USE THE APPLICATION:
 1. Download the following Jar: [BarcodeSimulator JAR file](https://github.com/atomar2000/BarcodeSimulator/blob/main/target/BarcodeSimulator-1.0-SNAPSHOT-jar-with-dependencies.jar)
    ![image](https://github.com/atomar2000/BarcodeSimulator/assets/43878272/10034acd-dc32-4fd6-ad32-2b28d8c95145)
