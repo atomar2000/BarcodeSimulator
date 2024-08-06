@@ -11,7 +11,13 @@
    ![image](https://github.com/atomar2000/BarcodeSimulator/assets/43878272/10034acd-dc32-4fd6-ad32-2b28d8c95145)
 
 2. Make sure you have JAVA 1.8 installed in your system.
-3. Double click on the jar file and you are good to go.
+3. **FOR WINDOWS**: Double click on the jar file and you are good to go.
+   - **FOR MAC**: open a terminal window at the location of the jar and run `java -jar <file_name_of_jar>`
+     -  In Finder, open the folder where the jar is saved.
+     -  right click on the folder and select "New Terminal at Folder" from the menu.
+     - run `java -jar <file_name_of_jar>`
+   ![image](https://github.com/user-attachments/assets/3326a893-9854-4e4a-b451-3569ecff16b0)
+
 
 </br>
 
