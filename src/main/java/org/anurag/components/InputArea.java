@@ -1,9 +1,9 @@
 package org.anurag.components;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -43,6 +43,8 @@ public class InputArea extends JPanel {
         enterRadioBtn.addActionListener(e-> {SUFFIX = KeyEvent.VK_ENTER;});
         JRadioButton tabRadioBtn=new JRadioButton("Tab");
         tabRadioBtn.addActionListener(e -> {SUFFIX = KeyEvent.VK_TAB;});
+        enterRadioBtn.setMaximumSize(new Dimension(50, 25));
+        tabRadioBtn.setMaximumSize(new Dimension(50, 25));
         bg.add(enterRadioBtn);
         bg.add(tabRadioBtn);
         JButton scanBtn = new JButton("Scan");
@@ -72,25 +74,24 @@ public class InputArea extends JPanel {
                 barcodeTextField.setText("");
             }
         });
-        oneDimBarcodeBtn.setPreferredSize(new Dimension(165, 20));
-        dataMatrixBarcodeBtn.setPreferredSize(new Dimension(165, 20));
-        scanBtn.setPreferredSize(new Dimension(80, 20));
+        oneDimBarcodeBtn.setMaximumSize(new Dimension(165, 25));
+        dataMatrixBarcodeBtn.setMaximumSize(new Dimension(165, 25));
+        scanBtn.setMaximumSize(new Dimension(80, 25));
         JPanel inputLabelAndTextPanel = new JPanel();
         inputLabelAndTextPanel.add(barcodeTextField);
         inputLabelAndTextPanel.add(enterRadioBtn);
         inputLabelAndTextPanel.add(tabRadioBtn);
-        inputLabelAndTextPanel.setSize(new Dimension(470,20));
+        inputLabelAndTextPanel.setMaximumSize(new Dimension(450,30));
 
         JPanel barcodeImageButtonPanel = new JPanel();
         barcodeImageButtonPanel.add(oneDimBarcodeBtn);
         barcodeImageButtonPanel.add(dataMatrixBarcodeBtn);
         barcodeImageButtonPanel.add(scanBtn);
-        barcodeImageButtonPanel.setSize(470,20);
 
         inputPanel.add(inputLabelAndTextPanel);
         inputPanel.add(barcodeImageButtonPanel);
         inputPanel.setLayout(new GridLayout(2,1));
-        inputPanel.setPreferredSize(new Dimension(470,50));
+        inputPanel.setMaximumSize(new Dimension(450,60));
         loadSpCharInMap();
     }
 

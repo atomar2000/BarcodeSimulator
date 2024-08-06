@@ -8,31 +8,25 @@
     <artifactId>BarcodeSimulator</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>4.5.14</version>
-            </dependency>
-            <dependency>
-                <groupId>com.weblookandfeel</groupId>
-                <artifactId>weblaf-ui</artifactId>
-                <version>x.x.x</version>
-            </dependency>
-            <dependency>
-                <groupId>com.weblookandfeel</groupId>
-                <artifactId>weblaf-core</artifactId>
-                <version>x.x.x</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.14</version>
+        </dependency>
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>3.5</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>

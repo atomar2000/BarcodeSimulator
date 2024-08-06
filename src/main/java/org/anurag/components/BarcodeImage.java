@@ -5,6 +5,7 @@ import org.anurag.utility.CopyImagetoClipBoard;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class BarcodeImage extends JPanel{
     private static final String IMG_NOT_FOUND_PATH = "";//"https://static.thenounproject.com/png/2002633-200.png";
     public BarcodeImage(){
         barcodeImageJpanel = new JPanel();
+        barcodeImageJpanel.setPreferredSize(new Dimension(0,0));
     }
     public static BarcodeImage getInstance(){
         return instance;
@@ -65,9 +67,8 @@ public class BarcodeImage extends JPanel{
         }
         barcodeImageJpanel.setPreferredSize(new Dimension(widthImg, heightImg));
         barcodeImageJpanel.add(clickToCopyImage);
-        barcodeImageJpanel.revalidate();
-        BarcodeSimulator.frame.setSize(new Dimension(Math.max(widthImg+10,500), BarcodeSimulator.frame.getHeight()-PREVIOUS_HEIGHT+heightImg));
-        PREVIOUS_HEIGHT = heightImg;
-        BarcodeSimulator.frame.revalidate();
+        barcodeImageJpanel.setSize(widthImg, heightImg);
+        BarcodeSimulator.frame.setSize(new Dimension(Math.max(widthImg+10,500), BarcodeSimulator.frame.getHeight()-PREVIOUS_HEIGHT+(heightImg/2)));
+        PREVIOUS_HEIGHT = (heightImg/2);
     }
 }

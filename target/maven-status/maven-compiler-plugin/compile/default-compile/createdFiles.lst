@@ -1,7 +1,7 @@
-org\anurag\utility\CopyImagetoClipBoard$TransferableImage.class
-org\anurag\components\InputArea.class
-org\anurag\components\RecentBarcodes.class
-org\anurag\BarcodeSimulator.class
-org\anurag\service\getBarcodeImage.class
-org\anurag\utility\CopyImagetoClipBoard.class
-org\anurag\components\BarcodeImage.class
+org/anurag/components/BarcodeImage.class
+org/anurag/utility/CopyImagetoClipBoard$TransferableImage.class
+org/anurag/service/getBarcodeImage.class
+org/anurag/BarcodeSimulator.class
+org/anurag/components/RecentBarcodes.class
+org/anurag/components/InputArea.class
+org/anurag/utility/CopyImagetoClipBoard.class
